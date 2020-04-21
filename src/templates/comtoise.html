@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comtoise: your old clock with a geeky twist</title>
+</head>
+<body>
+<h1>Comtoise: your old clock with a geeky twist!</h1>
+<div id="current-timezone">
+    <p>Current timezone: {{ timezone }}</p>
+    <p>Timezone: #TODO Dropdown</p>
+</div>
+<div id="now">
+    <ul>
+        <li>Current time(UTC): {{ now_english }}</li>
+        <li>Epoch time: {{now_epoch}}</li>
+        <li>ISO 8601 format: {{ now_iso }}</li>
+    </ul>
+</div>
+
+<div id="time-input">
+    <p>Enter an epoch time:<input>
+        <button>Convert</button>
+    </p>
+    <p>Enter an ISO 8601 formatted timestamp:<input>
+        <button>Convert</button>
+    </p>
+    <p>Pick a date and time:#TODO datepicker
+        <button>Convert</button>
+    </p>
+</div>
+<div id="converted-time" class="{{ visibility }}">
+    <ul>
+        <li>Prose: {{ convert_english}}</li>
+        <li>ISO 8601: {{ converted_iso }}</li>
+        <li>ISO 8601 (UTC): {{ convert_iso_utc }}</li>
+        <li>Epoch: {{ converted_epoch }}</li>
+    </ul>
+</div>
+</body>
+</html>
