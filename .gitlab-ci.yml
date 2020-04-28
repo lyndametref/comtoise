@@ -4,6 +4,6 @@ heroku:
     - uname -a
     - git remote add heroku https://heroku:$HEROKU_TOKEN@git.heroku.com/comtoise.git
   script:
-      git push -f heroku HEAD:master
+      git push -f heroku HEAD:refs/heads/master
   only:
       - master
