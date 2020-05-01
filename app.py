@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=["GET", "POST"])
 def comtoise():
-    print(request.form)
     [now_epoch, now_iso, now_iso_utc, now_prose] = convert_datetime(datetime.datetime.now())
 
     if request.method == 'POST':
