@@ -12,28 +12,43 @@
 </div>
 <div id="now">
     <ul>
-        <li>Current time(UTC): {{ now_english }}</li>
+        <li>Current time: {{ now_prose }}</li>
         <li>Epoch time: {{now_epoch}}</li>
         <li>ISO 8601 format: {{ now_iso }}</li>
+        <li>ISO 8601 format - UTC : {{ now_iso_utc }}</li>
     </ul>
 </div>
 
 <div id="time-input">
-    <p>Enter an epoch time:<input>
-        <button>Convert</button>
-    </p>
-    <p>Enter an ISO 8601 formatted timestamp:<input>
-        <button>Convert</button>
-    </p>
-    <p>Pick a date and time:#TODO datepicker
-        <button>Convert</button>
-    </p>
+    <ul>
+        <li>
+            <form action="/" method="POST">
+                Enter an epoch time:
+                <input name="from_epoch" value="{{now_epoch}}">
+                <button type="submit" name="convert_from_epoch">Convert</button>
+            </form>
+        </li>
+        <li>
+            <form action="/" method="POST">
+                Enter an ISO 8601 formatted timestamp:
+                <input name="from_iso" value="{{now_iso}}">
+                <button type="submit" name="convert_from_iso">Convert</button>
+            </form>
+
+        </li>
+        <li>
+            <form action="/" method="POST">
+                Pick a date and time:#TODO datepicker
+<!--                <button type="submit" name="convert_from_picker">Convert</button>-->
+            </form>
+        </li>
+    </ul>
 </div>
 <div id="converted-time" class="{{ visibility }}">
     <ul>
-        <li>Prose: {{ convert_english}}</li>
+        <li>Prose: {{ converted_prose }}</li>
         <li>ISO 8601: {{ converted_iso }}</li>
-        <li>ISO 8601 (UTC): {{ convert_iso_utc }}</li>
+        <li>ISO 8601 (UTC): {{ converted_iso_utc }}</li>
         <li>Epoch: {{ converted_epoch }}</li>
     </ul>
 </div>
