@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import datetime
-import time
 import math
 
 app = Flask(__name__)
@@ -12,7 +11,6 @@ def comtoise():
 
     if request.method == 'POST':
         if "convert_from_epoch" in request.form:
-
             from_time = datetime.datetime.fromtimestamp(int(request.form['from_epoch']))
         elif "convert_from_iso" in request.form:
             from_time = datetime.datetime.fromisoformat(request.form['from_iso'])
@@ -37,10 +35,10 @@ def comtoise():
 
 
 def convert_datetime(from_time) -> [str, str, str, str]:
-    converted_prose = str(from_time.ctime())
+    converted_prose = from_time.ctime()
     converted_iso = from_time.isoformat(timespec='seconds')
     converted_iso_utc = from_time.astimezone(tz=datetime.timezone.utc).isoformat()
-    converted_epoch = math.floor(from_time.timestamp())
+    converted_epoch = str(int(math.floor(from_time.timestamp())))
     return [converted_epoch, converted_iso, converted_iso_utc, converted_prose]
 
 
