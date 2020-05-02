@@ -9,7 +9,7 @@ test:
     - pip install pipenv
     - pipenv install
   script:
-    - pytest
+    - pipenv run pytest
 
 heroku:
   stage: deploy
