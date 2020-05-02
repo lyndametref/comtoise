@@ -1,14 +1,22 @@
 image: python:latest
-heroku:
-  stage: deploy
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
   before_script:
     - pip install pipenv
     - pipenv install
+  script:
+    - pytest
+
+heroku:
+  stage: deploy
+  before_script:
     - uname -a
     - git remote add heroku https://heroku:$HEROKU_TOKEN@git.heroku.com/comtoise.git
   script:
-    - pipenv shell
-    - pytest test
     - git push -f heroku HEAD:refs/heads/master
   only:
       - master
